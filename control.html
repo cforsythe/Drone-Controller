@@ -12,7 +12,7 @@
         
         <script>
             function runAction(id){
-                var address = localStorage.getItem("address") + "?action=" + id;
+                var address = localStorage.getItem("address") + "/" + id;
                 $.ajax({
                     type:"POST",
                     url: address,
