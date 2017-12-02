@@ -10,7 +10,8 @@
         
         <script>
             function checkIP(){
-                var ip = "https://" + $("#address").val();
+                var ip = "http://" + $("#address").val();
+                localStorage.address = ip;
                 $.ajax({
                     type:"GET",
                     url: ip,
@@ -18,7 +19,6 @@
                     success: function(data){
                         console.log(data);
                         if(data){
-                            localStorage.address = ip;
                             window.location.href="control.html";
                         }
                     }
