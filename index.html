@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Drone Control </title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <span>IP-Address: </span><input type="text" id="address"/>
+        <input type="submit" id='submit'/>
+        
+        <script>
+            function checkIP(){
+                var ip = "https://" + $("#address").val();
+                $.ajax({
+                    type:"GET",
+                    url: ip,
+                    dataType: "html", 
+                    success: function(data){
+                        console.log(data);
+                        if(data){
+                            localStorage.address = ip;
+                            window.location.href="control.html";
+                        }
+                    }
+                })
+            }
+            $("#submit").click(function(){
+                checkIP();
+            })
+            
+            
+        </script>
+    </body>
+</html>

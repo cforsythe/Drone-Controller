@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Drone Control </title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <button id="left" name="Left">Left</button>
+        <button id="right" name="right">Right</button>
+        <button id="forward" name="forward">Forward</button>
+        <button id="back" name="back">Back</button>
+        
+        <script>
+            function runAction(id){
+                var address = localStorage.getItem("address") + "?action=" + id;
+                $.ajax({
+                    type:"POST",
+                    url: address,
+                    dataType: "json", 
+                    success: function(data){
+                        console.log(id);
+                    }
+                })
+            }
+        
+            $("button").click(function(){
+                runAction(this.id);
+            })
+        </script>
+    </body>
+</html>
